@@ -6,7 +6,8 @@ fs.exists('./build/config.json', (exists) => {
   if (!exists) {
     fs.openSync('./build/config.json', 'w');
     fs.writeFile('./build/config.json', JSON.stringify({
-      api_key: 'YOUR_API_KEY'
+      api_key: 'YOUR_API_KEY',
+      allowed_chat: 'YOUR_ALLOWED_CHAT or * for all'
     }), (err) => {
       console.log(err)
     })

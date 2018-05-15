@@ -15,7 +15,11 @@ class bot {
   private setMsgListener() {
     this.mybot.onText( /\/lunabot (.*)/, ( msg, match ) => {
       if(msg.chat.id != this.allowedChat) return this.sendMessage(msg.chat.id, "Chat not allowed");
-      console.log(msg.text)
+      console.log(match[1])
+      switch(match[1]){
+        case 'test':
+          return this.sendMessage(msg.chat.id, 'test succeed!');
+      }
     })
   }
 
