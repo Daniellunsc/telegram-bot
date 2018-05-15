@@ -16,4 +16,4 @@ fs.exists('./build/config.json', (exists) => {
 //const word = (<any>config).config;
 console.log('config file exists')
 
-console.log(bot())
+const mybot = new bot();
