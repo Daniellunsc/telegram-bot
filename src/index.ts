@@ -14,7 +14,20 @@ fs.exists('./build/config.json', (exists) => {
   }
 })
 
-//const word = (<any>config).config;
 console.log('config file exists')
 
 const mybot = new bot();
+
+mybot.onText(/\/lunabot (.*)/, (msg, match) => {
+  console.log((msg.chat.id != mybot.allowedChat)&&(mybot.allowedChat.toString() != '*'))
+      if(!mybot.CheckAllowed(msg.chat.id)){
+        return mybot.sendMessage(msg.chat.id, "Chat not allowed");
+      }
+      console.log(match[1])
+      switch(match[1]){
+        case 'test':
+          return mybot.sendMessage(msg.chat.id, 'test succeed!');
+        default:
+          return mybot.sendMessage(msg.chat.id, 'Unknown command');
+      }
+})
