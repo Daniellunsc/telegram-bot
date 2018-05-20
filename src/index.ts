@@ -19,7 +19,7 @@ console.log('config file exists')
 const mybot = new bot();
 
 mybot.onText(/\/lunabot (.*)/, (msg, match) => {
-  console.log((msg.chat.id != mybot.allowedChat)&&(mybot.allowedChat.toString() != '*'))
+  console.log((msg.chat.id != mybot.chatAllowed)&&(mybot.chatAllowed.toString() != '*'))
       if(!mybot.CheckAllowed(msg.chat.id)){
         return mybot.sendMessage(msg.chat.id, "Chat not allowed");
       }

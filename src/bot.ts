@@ -3,7 +3,7 @@ import * as telegramBot from 'node-telegram-bot-api';
 
 class bot {
   private api_token: string;
-  public allowedChat: number;
+  private allowedChat: number;
   private mybot: telegramBot;
 
   constructor(){
@@ -12,8 +12,12 @@ class bot {
     this.mybot = new telegramBot(this.api_token, {polling: true})
   }
 
+  get chatAllowed  {
+    return this.allowedChat;
+  }
+
   public CheckAllowed(chatId: number): boolean {
-    if((chatId.toString() === this.allowedChat.toString())||(this.allowedChat.toString() == '*')){
+    if((chatId.toString() === this.allowedChat.toString())||(this.allowedChat.toString() === '*')){
       // allowed
       return true;
     }
